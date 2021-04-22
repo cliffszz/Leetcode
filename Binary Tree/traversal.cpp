@@ -1,5 +1,6 @@
 #include <vector>
 #include <stack>
+#include <queue>
 #include <algorithm>
 using namespace std;
 
@@ -88,6 +89,24 @@ public:
             if (cur->right != nullptr) stk.push(cur->right);
         }
         reverse(res.begin(), res.end());
+        return res;
+    }
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        queue<TreeNode*> que;
+        if (root != nullptr) que.push(root);
+        while (!que.empty()) {
+            int s = que.size();
+            vector<int> level;
+            for (int i = 0; i < s; i++) {
+                TreeNode* cur = que.front();
+                level.push_back(cur->val);
+                que.pop();
+                if (cur->left != nullptr) que.push(cur->left);
+                if (cur->right != nullptr) que.push(cur->right);
+            }
+            res.push_back(level);
+        }
         return res;
     }
 };
