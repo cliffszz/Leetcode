@@ -3,6 +3,8 @@
         "*.txt": "plaintext",
         "ostream": "cpp",
         "iostream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp"
     }
 }
