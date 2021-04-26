@@ -41,3 +41,29 @@ public:
         return root;
     }
 };
+
+class Solution2 {
+public:
+    TreeNode* traversal(vector<int>& nums, int left, int right) {
+        if (left >= right) return nullptr;
+        TreeNode* root = new TreeNode(0);
+        if (right - left == 1) {
+            root->val = nums[left];
+            return root;
+        }
+        int maxId = left;
+        for (int i = left + 1; i < right; i++) {
+            if (nums[i] >= nums[maxId]) {
+                maxId = i;
+            }
+        }
+        root->val = nums[maxId];
+        root->left = traversal(nums, left, maxId);
+        root->right = traversal(nums, maxId + 1, right);
+        return root;
+    }
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        if (nums.size() == 0) return nullptr;
+        return traversal(nums, 0, nums.size());
+    }
+};

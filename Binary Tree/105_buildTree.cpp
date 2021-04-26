@@ -42,3 +42,29 @@ public:
         return traversal(preorder, inorder);
     }
 };
+
+class Solution2 {
+public:
+    TreeNode* traversal(vector<int>& preorder, int leftPre, int rightPre, vector<int>& inorder, int leftIn, int rightIn) {
+        if (leftPre == rightPre) return nullptr;
+        int rootVal = preorder[leftPre];
+        TreeNode* root = new TreeNode(rootVal);
+        if (rightPre - leftPre == 1) return root;
+        int delId;
+        for (int i = leftIn; i <= rightIn; i++) {
+            if (inorder[i] == rootVal) {
+                delId = i;
+                break;
+            }
+        }
+
+        root->left = traversal(preorder, leftPre + 1, leftPre + 1 + delId - leftIn, inorder, leftIn, delId);
+        root->right = traversal(preorder, leftPre + 1 + delId - leftIn, rightPre, inorder, delId + 1, rightIn);
+
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        if (preorder.size() == 0 || inorder.size() == 0) return nullptr;
+        return traversal(preorder, 0, preorder.size(), inorder, 0, inorder.size());
+    }
+};
