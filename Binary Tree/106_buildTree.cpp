@@ -16,7 +16,32 @@ struct TreeNode {
 
 class Solution {
 public:
+    TreeNode* traversal(vector<int>& inorder, vector<int>& postorder) {
+        //数组大小为零，说明是空节点
+        if (postorder.size() == 0) return nullptr;
+        //后序遍历数组的最后一个节点为根节点
+        int rootVal = postorder[postorder.size() - 1];
+        TreeNode* root = new TreeNode(rootVal);
+        //叶子结点
+        if (postorder.size() == 1) return root;
+        //找切割点
+        int delId;
+        for (delId = 0; delId < inorder.size(); delId++) {
+            if (inorder[delId] == rootVal) break;
+        }
+        //切割中序数组和后续数组
+        vector<int> leftInorder(inorder.begin(), inorder.begin() + delId);
+        vector<int> rightInorder(inorder.begin() + delId + 1, inorder.end());
+        postorder.resize(postorder.size() - 1);
+        vector<int> leftPostorder(postorder.begin(), postorder.begin() + leftInorder.size());
+        vector<int> rightPostOrder(postorder.begin() + leftInorder.size(), postorder.end());
+        //递归
+        root->left = traversal(leftInorder, leftPostorder);
+        root->right = traversal(rightInorder, rightPostOrder);
+        return root;
+    }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-
+        if (inorder.size() == 0 || postorder.size() == 0) return nullptr;
+        return traversal(inorder, postorder);
     }
 };
