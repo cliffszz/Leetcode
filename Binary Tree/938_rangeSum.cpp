@@ -61,21 +61,22 @@ class Solution3 {
 public:
     int rangeSumBST(TreeNode *root, int low, int high) {
         int sum = 0;
-        queue<TreeNode*> q({root});
-        while (!q.empty()) {
-            auto node = q.front();
-            q.pop();
-            if (node == nullptr) {
+        queue<TreeNode*> que;
+        que.push(root);
+        while (!que.empty()) {
+            TreeNode* cur = que.front();
+            que.pop();
+            if (cur == nullptr) {
                 continue;
             }
-            if (node->val > high) {
-                q.push(node->left);
-            } else if (node->val < low) {
-                q.push(node->right);
+            if (cur->val > high) {
+                que.push(cur->left);
+            } else if (cur->val < low) {
+                que.push(cur->right);
             } else {
-                sum += node->val;
-                q.push(node->left);
-                q.push(node->right);
+                sum += cur->val;
+                que.push(cur->left);
+                que.push(cur->right);
             }
         }
         return sum;
