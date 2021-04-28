@@ -1,4 +1,6 @@
 //饿汉模式
+//饿汉：饿了肯定要饥不择食。所以在单例类定义的时候就进行实例化。
+//是线程安全的
 class singlePattern {
 private:
     //构造函数为私有，不可继承
@@ -20,13 +22,15 @@ public:
         }
     };
 };
-
+//初始化即实例化
 singlePattern* singlePattern::p = new singlePattern();
 singlePattern* singlePattern::instance() {
     return p;
 }
 
 //懒汉模式
+//懒汉：故名思义，不到万不得已就不会去实例化类，也就是说在第一次用到类实例的时候才会去实例化。
+//不是线程安全的
 class singlePattern2 {
 private:
     //构造函数为私有，不可继承
@@ -49,7 +53,7 @@ public:
     };
 };
 
-singlePattern2* singlePattern2::p = new singlePattern2();
+singlePattern2* singlePattern2::p = nullptr;
 singlePattern2* singlePattern2::instance() {
     if (p == nullptr) {
         return new singlePattern2();
