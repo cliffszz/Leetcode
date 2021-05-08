@@ -7,6 +7,7 @@ public:
     bool isMatch(string s, string p) {
         int m = s.size();
         int n = p.size();
+        //lambda表达式的数据类型是函数对象，可用auto类型、std::function模板类型（需#include <functional>）进行保存和调用
         auto match = [&](int i, int j) {
             if (i == 0) return false;
             if (p[j - 1] == '.') return true;
