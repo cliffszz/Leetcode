@@ -9,7 +9,8 @@ public:
         unordered_map<int, int> map(nums.size());
         for (int i = 0; i < nums.size(); i++) {
             if (map.find(target - nums[i]) != map.end()) return {map[target - nums[i]], i};
-            else map[nums[i]] = i;
+            //else map[nums[i]] = i;
+            else map.insert(pair<int, int>(nums[i], i));
         }
         return {};
     }
