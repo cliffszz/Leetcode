@@ -5,9 +5,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
+        if (nums.size() == 0) return {-1, -1};
+        if (nums.size() == 1) {
+            if (nums[0] != target) return {-1, -1};
+            else return {0, 0};
+        }
         int left = 0, right = nums.size() - 1;
+        int mid = 0;
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            mid = left + (right - left) / 2;
             if (nums[mid] == target) {
                 left = mid;
                 right = mid;
@@ -18,6 +24,7 @@ public:
                 right = mid - 1;
             }
         }
+        if (nums[mid] != target) return {-1, -1};
         while (left >= 0) {
             if (nums[left] != target) {
                 left++;
@@ -36,8 +43,6 @@ public:
                 right++;
             }
         }
-        if (nums[left] == target && nums[right] == target) {
-            return {left, right};
-        } else return {-1, -1};
+        return {left, right};
     }
 };
