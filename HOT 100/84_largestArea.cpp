@@ -81,3 +81,26 @@ public:
         return res;
     }
 };
+
+class Solution4 {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int res = 0;
+        int n = heights.size();
+        vector<int> left(n);
+        vector<int> right(n, n);
+        stack<int> stk;
+        for (int i = 0; i < n; i++) {
+            while (!stk.empty() && heights[i] <= heights[stk.top()]) {
+                right[stk.top()] = i;
+                stk.pop();
+            }
+            left[i] = stk.empty() ? -1 : stk.top();
+            stk.push(i);
+        }
+        for (int i = 0; i < n; i++) {
+            res = max(res, (right[i] - left[i] - 1) * heights[i]);
+        }
+        return res;
+    }
+};
