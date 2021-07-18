@@ -1,4 +1,4 @@
-package main
+package offer
 
 func replaceSpace(s string) string {
 	b := []byte(s)

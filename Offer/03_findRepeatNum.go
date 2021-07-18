@@ -1,4 +1,4 @@
-package main
+package offer
 
 func findRepearNumber(nums []int) int {
 	m := make(map[int]bool)
