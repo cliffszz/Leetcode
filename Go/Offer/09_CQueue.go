@@ -15,19 +15,19 @@ func Constructor() CQueue {
 	}
 }
 
-func (this *CQueue) AppendTail(value int) {
-	this.stackIn.PushBack(value)
+func (c *CQueue) AppendTail(value int) {
+	c.stackIn.PushBack(value)
 }
 
-func (this *CQueue) DeleteHead() int {
-	if this.stackOut.Len() == 0 {
-		for this.stackIn.Len() > 0 {
-			this.stackOut.PushBack(this.stackIn.Remove(this.stackIn.Back()))
+func (c *CQueue) DeleteHead() int {
+	if c.stackOut.Len() == 0 {
+		for c.stackIn.Len() > 0 {
+			c.stackOut.PushBack(c.stackIn.Remove(c.stackIn.Back()))
 		}
 	}
-	if this.stackOut.Len() != 0 {
-		res := this.stackOut.Back()
-		this.stackOut.Remove(res)
+	if c.stackOut.Len() != 0 {
+		res := c.stackOut.Back()
+		c.stackOut.Remove(res)
 		return res.Value.(int)
 	}
 	return -1

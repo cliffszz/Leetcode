@@ -1,6 +1,6 @@
 package offer
 
-func replaceSpace(s string) string {
+func ReplaceSpace(s string) string {
 	b := []byte(s)
 	res := make([]byte, 0)
 	for _, c := range b {
@@ -13,7 +13,7 @@ func replaceSpace(s string) string {
 	return string(res)
 }
 
-func replaceSpace2(s string) string {
+func ReplaceSpace2(s string) string {
 	b := []byte(s)
 	l := len(s)
 	cnt := 0

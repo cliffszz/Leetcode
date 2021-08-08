@@ -5,21 +5,21 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func reversePrint(head *ListNode) []int {
+func ReversePrint(head *ListNode) []int {
 	res := make([]int, 0)
-	backTracking(head, &res)
+	BackTracking(head, &res)
 	return res
 }
 
-func backTracking(head *ListNode, res *[]int) {
+func BackTracking(head *ListNode, res *[]int) {
 	if head == nil {
 		return
 	}
-	backTracking(head.Next, res)
+	BackTracking(head.Next, res)
 	*res = append(*res, head.Val)
 }
 
-func reversePrint2(head *ListNode) []int {
+func BeversePrint2(head *ListNode) []int {
 	if head == nil {
 		return nil
 	}
