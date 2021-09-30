@@ -46,4 +46,16 @@ func main() {
 	fmt.Println(arr)
 	quickSort(arr)
 	fmt.Println(arr)
+
+	fmt.Println("Merge sort top down")
+	arr = []int{2, 1, 5, 6, 7, 4, 8, 9, 3}
+	fmt.Println(arr)
+	mergeSortDown(arr)
+	fmt.Println(arr)
+
+	fmt.Println("Merge sort bottom up")
+	arr = []int{2, 1, 5, 6, 7, 4, 8, 9, 3}
+	fmt.Println(arr)
+	mergeSortUp(arr)
+	fmt.Println(arr)
 }
