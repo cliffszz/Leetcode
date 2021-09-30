@@ -40,4 +40,10 @@ func main() {
 	fmt.Println(arr)
 	heapSort2(arr)
 	fmt.Println(arr)
+
+	fmt.Println("Quick sort")
+	arr = []int{2, 1, 5, 6, 7, 4, 8, 9, 3}
+	fmt.Println(arr)
+	quickSort(arr)
+	fmt.Println(arr)
 }
