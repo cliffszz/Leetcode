@@ -1,18 +1,18 @@
-package main
+package mysort
 
 // 自顶向下归并排序
-func mergeSortDown(arr []int) {
+func MergeSortDown(arr []int) {
 	if len(arr) < 2 {
 		return
 	}
 	mid := len(arr) / 2
-	mergeSortDown(arr[:mid])
-	mergeSortDown(arr[mid:])
+	MergeSortDown(arr[:mid])
+	MergeSortDown(arr[mid:])
 	merge(arr[:mid], arr[mid:])
 }
 
 // 自底向上归并排序
-func mergeSortUp(arr []int) {
+func MergeSortUp(arr []int) {
 	for size := 1; size <= len(arr); size += size {
 		for i := 0; i < len(arr)-size; i += 2 * size {
 			merge(arr[i:i+size], arr[i+size:min(i+2*size, len(arr))])

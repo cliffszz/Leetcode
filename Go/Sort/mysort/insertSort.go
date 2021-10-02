@@ -1,6 +1,6 @@
-package main
+package mysort
 
-func insertSort(arr []int) {
+func InsertSort(arr []int) {
 	// 从第二个数开始往前插入数字
 	for i := 1; i < len(arr); i++ {
 		j := i

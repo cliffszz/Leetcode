@@ -1,6 +1,6 @@
-package main
+package mysort
 
-func quickSort(arr []int) {
+func QuickSort(arr []int) {
 	// 区间内少于两个数，退出递归
 	if len(arr) < 2 {
 		return
@@ -8,9 +8,9 @@ func quickSort(arr []int) {
 	// 找到中间值
 	mid := partition(arr)
 	// 递归对左半部分快排
-	quickSort(arr[:mid])
+	QuickSort(arr[:mid])
 	// 递归对右半部分快排
-	quickSort(arr[mid+1:])
+	QuickSort(arr[mid+1:])
 }
 
 func partition(arr []int) int {

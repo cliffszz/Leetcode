@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"fmt"
+	"main/mysort"
 	"math/big"
 	"sync"
 	"time"
@@ -15,7 +16,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		bubbleSort(arr)
+		mysort.BubbleSort(arr)
 		fmt.Println("Bubble sort time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -23,7 +24,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		selectionSort(arr)
+		mysort.SelectionSort(arr)
 		fmt.Println("Selection sort time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -31,7 +32,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		insertSort(arr)
+		mysort.InsertSort(arr)
 		fmt.Println("Insert sort time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -39,7 +40,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		shellSort(arr)
+		mysort.ShellSort(arr)
 		fmt.Println("Shell sort time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -47,7 +48,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		heapSort(arr)
+		mysort.HeapSort(arr)
 		fmt.Println("Heap sort time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -55,7 +56,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		heapSort2(arr)
+		mysort.HeapSort2(arr)
 		fmt.Println("Heap sort by container/heap time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -63,7 +64,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		mergeSortDown(arr)
+		mysort.MergeSortDown(arr)
 		fmt.Println("Merge sort top down time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -71,7 +72,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		mergeSortUp(arr)
+		mysort.MergeSortUp(arr)
 		fmt.Println("Merge sort bottom up time is:", time.Since(start))
 		wg.Done()
 	}()
@@ -79,7 +80,7 @@ func main() {
 	go func() {
 		arr := randArr(10000)
 		start := time.Now()
-		quickSort(arr)
+		mysort.QuickSort(arr)
 		fmt.Println("Quick sort time is:", time.Since(start))
 		wg.Done()
 	}()

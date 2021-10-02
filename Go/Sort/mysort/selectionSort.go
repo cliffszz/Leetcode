@@ -1,7 +1,7 @@
-package main
+package mysort
 
 // 每次循环最小的元素，放在首位
-func selectionSort(arr []int) {
+func SelectionSort(arr []int) {
 	for i := 0; i < len(arr); i++ {
 		minIndex := i
 		for j := i + 1; j < len(arr); j++ {

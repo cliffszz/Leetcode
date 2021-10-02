@@ -1,10 +1,10 @@
-package main
+package mysort
 
 import (
 	"container/heap"
 )
 
-func heapSort(arr []int) {
+func HeapSort(arr []int) {
 	// 从最后一个非叶子节点开始构建大顶堆
 	for i := len(arr)/2 - 1; i >= 0; i-- {
 		maxHeapify(arr, i, len(arr))
@@ -41,7 +41,7 @@ func maxHeapify(arr []int, index, heapSize int) {
 }
 
 // 利用标准库实现堆排序
-func heapSort2(arr []int) {
+func HeapSort2(arr []int) {
 	mh := maxHeap{}
 	for _, a := range arr {
 		heap.Push(&mh, a)
