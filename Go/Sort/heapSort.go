@@ -2,12 +2,15 @@ package main
 
 import (
 	"container/heap"
-	"fmt"
 )
 
 func heapSort(arr []int) {
-	bulidMaxHeap(arr)
-	for i := len(arr) - 1; i >= 0; i-- {
+	// 从最后一个非叶子节点开始构建大顶堆
+	for i := len(arr)/2 - 1; i >= 0; i-- {
+		maxHeapify(arr, i, len(arr))
+	}
+	// 不断调整大顶堆
+	for i := len(arr) - 1; i > 0; i-- {
 		// 将最大值放在数组最后
 		arr[0], arr[i] = arr[i], arr[0]
 		// 调整剩余数组，使其满足大顶堆
@@ -15,21 +18,17 @@ func heapSort(arr []int) {
 	}
 }
 
-// 初始构建大顶堆
-func bulidMaxHeap(arr []int) {
-	// 从最后一个非叶子节点开始构建大顶堆
-	for i := len(arr)/2 - 1; i >= 0; i-- {
-		maxHeapify(arr, i, len(arr))
-	}
-}
-
 // 调整大顶堆，最后一个参数为剩余未排序的数字数量，即堆的大小
 func maxHeapify(arr []int, index, heapSize int) {
-	left, right := index+1, index+2
+	// 左右子节点下标
+	left, right := 2*index+1, 2*index+2
+	// 根左右节点中最大的节点的下标
 	largest := index
+	// 与左子节点比较
 	if left < heapSize && arr[left] > arr[largest] {
 		largest = left
 	}
+	// 与右子节点比较
 	if right < heapSize && arr[right] > arr[largest] {
 		largest = right
 	}
@@ -47,8 +46,7 @@ func heapSort2(arr []int) {
 	for _, a := range arr {
 		heap.Push(&mh, a)
 	}
-	fmt.Println(mh)
-	for i := 0; i < mh.Len(); i++ {
+	for i := 0; i < len(arr); i++ {
 		arr[i] = heap.Pop(&mh).(int)
 	}
 }
